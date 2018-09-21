@@ -1,10 +1,9 @@
 const router = require('express').Router()
 module.exports = router
-const {key, mapsKey} = require('../../secrets')
 const axios = require('axios')
 
 var googleMapsClient = require('@google/maps').createClient({
-	key: mapsKey
+	key: process.env.mapsKey
 })
 
 router.get('/:place', async (req, res, next) => {
@@ -19,7 +18,9 @@ router.get('/:place', async (req, res, next) => {
 					const latitude = results[0].geometry.location.lat
 					const longitude = results[0].geometry.location.lng
 					const info = await axios.get(
-						`https://api.darksky.net/forecast/${key}/${latitude},${longitude}`
+						`https://api.darksky.net/forecast/${
+							process.env.key
+						}/${latitude},${longitude}`
 					)
 					const weatherResults = {
 						summary: info.data.daily.summary,
