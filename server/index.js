@@ -3,6 +3,8 @@ const express = require('express')
 const morgan = require('morgan')
 const compression = require('compression')
 const session = require('express-session')
+var http = require('http')
+var enforce = require('express-sslify')
 const passport = require('passport')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
@@ -42,6 +44,7 @@ passport.deserializeUser(async (id, done) => {
 
 const createApp = () => {
   // logging middleware
+  app.use(enforce.HTTPS({trustProtoHeader: true}))
   app.use(morgan('dev'))
 
   // body parsing middleware
