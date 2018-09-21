@@ -4,7 +4,10 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import {me} from './store'
-
+import Geocoding from './components/Geocoding'
+import NewList from './components/NewList'
+import AllLists from './components/AllLists'
+import EditList from './components/EditList'
 /**
  * COMPONENT
  */
@@ -24,6 +27,10 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+            <Route path="/geocoding" component={Geocoding} />
+            <Route exact path="/newList" component={NewList} />
+            <Route path="/lists/:listId" component={EditList} />
+            <Route path="/lists" component={AllLists} />
             <Route path="/home" component={UserHome} />
           </Switch>
         )}

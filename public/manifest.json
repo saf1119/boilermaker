@@ -1,0 +1,21 @@
+{
+  "short_name": "PackIt",
+  "name": "PackIt",
+  "start_url": "/",
+  "background_color": "#d5e1df",
+  "display": "standalone",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "packIt.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "packIt.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "theme_color": "#3367D6"
+}

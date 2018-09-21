@@ -5,22 +5,40 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
+  <div className="blue">
+    <div className="ui one column stackable center aligned page grid">
+      <div className="column twelve wide">
+        <h3 />
+        <h1 className="white">PackIt</h1>
+      </div>
+    </div>
     <nav>
       {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+        <div className="ui one column stackable center aligned page grid">
+          <div className="column twelve wide">
+            {/* The navbar will show these links after you log in */}
+            <a href="#" onClick={handleClick}>
+              <h3 className="form">Logout</h3>
+            </a>
+            <Link to="/lists">
+              <h3 className="form">My Lists</h3>
+            </Link>
+            <Link to="/geocoding">
+              <h3 className="form">New List</h3>
+            </Link>
+          </div>
         </div>
       ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
+        <div className="ui one column stackable center aligned page grid">
+          <div className="column twelve wide">
+            {/* The navbar will show these links before you log in */}
+            <Link to="/login">
+              <h3 className="form">Login</h3>
+            </Link>
+            <Link to="/signup">
+              <h3 className="form">Sign Up</h3>
+            </Link>
+          </div>
         </div>
       )}
     </nav>

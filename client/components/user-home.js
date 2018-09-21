@@ -9,8 +9,14 @@ export const UserHome = props => {
   const {email} = props
 
   return (
-    <div>
-      <h3>Welcome, {email}</h3>
+    <div className="ui two column stackable center aligned page grid">
+      <div className="column thirty wide">
+        <br />
+        <h1 className="sargasso form">Welcome, {email}</h1>
+        <h2 className="sargasso form">
+          Planning your next trip is just a few clicks away!
+        </h2>
+      </div>
     </div>
   )
 }
