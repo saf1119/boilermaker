@@ -1,5 +1,5 @@
 var CACHE_NAME = 'my-site-cache-v1'
-var urlsToCache = ['/', '/login', '/home', '/signup', '/lists']
+var urlsToCache = ['/', '/login', '/home', '/signup', '/lists', '/lists/1', '/lists/2', '/lists/3', '/lists/4', '/lists/5']
 
 self.addEventListener('install', function(event) {
   // Perform install steps
