@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {Form, Button} from 'semantic-ui-react'
+import Navbar from './Navbar'
 
 /**
  * COMPONENT
@@ -11,28 +12,31 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div className="background-img">
-      <div className="background ui one column stackable center aligned page grid">
-        <div className="column twelve wide">
-          <br />
-          <br />
-          <Form onSubmit={handleSubmit} name={name}>
-            <Form.Field>
-              <label htmlFor="email">Email</label>
-              <input name="email" type="text" />
-            </Form.Field>
+    <div className="animated fadeIn">
+      <Navbar />
+      <div className="background-img">
+        <div className="background ui one column stackable center aligned page grid">
+          <div className="column twelve wide">
             <br />
-            <Form.Field className="form">
-              <label htmlFor="password">Password</label>
-              <input name="password" type="password" />
-            </Form.Field>
             <br />
-            <Button color="blue" type="submit" size="small" className="form">
-              <h4 className="form">{displayName}</h4>
-            </Button>
-            {error && error.response && <div> {error.response.data} </div>}
-          </Form>
-          <br />
+            <Form onSubmit={handleSubmit} name={name}>
+              <Form.Field>
+                <label htmlFor="email">Email</label>
+                <input name="email" type="text" />
+              </Form.Field>
+              <br />
+              <Form.Field className="form">
+                <label htmlFor="password">Password</label>
+                <input name="password" type="password" />
+              </Form.Field>
+              <br />
+              <Button color="blue" type="submit" size="small" className="form">
+                <h4 className="form">{displayName}</h4>
+              </Button>
+              {error && error.response && <div> {error.response.data} </div>}
+            </Form>
+            <br />
+          </div>
         </div>
       </div>
     </div>

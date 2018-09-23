@@ -1,25 +1,98 @@
 body {
 	font-family: sans-serif;
-	background-color: #d5e1df;
+	background-color: #d4d9de;
 }
-body::after {
+
+.border {
+	border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: transparent !important;
+}
+
+.height {
+	max-height: 800px;
+}
+
+.background::after {
 	content: '';
-	background: url('background.jpg');
+	background: url('packing.jpg');
 	background-size: cover;
-	opacity: 0.1;
+	opacity: 0.9;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
 	position: absolute;
 	z-index: -1;
+}
+
+.background-fixed {
+	content: '';
+	background: url('packing.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+	opacity: 0.9;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+}
+.whiteColor {
+	color: white;
+}
+
+.padding {
+	padding: 15px 15px 15px 15px;
+
+}
+
+.tiny-black {
+	color: black;
+	font-size: 12px;
+	padding: 15px 15px 15px 15px;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.background-home::after {
+	content: '';
+	background: url('darkvacation.jpg');
+	background-size: cover;
+	opacity: 1;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.red {
+	z-index: 7;
+	color: red;
+}
+
+.sizing {
+	min-height: 400px;
+}
+
+.width {
+	max-width: 80%;
+}
+
+.tall {
+	height: 1000px;
 }
 
 .background-img::after {
 	content: '';
 	background: url('background.jpg');
-	background-size: cover;
-	opacity: 0.8;
+	background-size: 100% 100%;
+	opacity: 1;
 	top: 0;
 	left: 0;
 	bottom: 0;
@@ -28,9 +101,21 @@ body::after {
 	z-index: -1;
 }
 
+.vacation {
+	background-image: '';
+}
+
 a {
 	color: white;
 	font-family: 'Playfair Display', serif, bold;
+}
+
+.white-color {
+	color: white;
+}
+.card-sizing {
+	height: 100px;
+	width: 150px;
 }
 
 label {
@@ -45,6 +130,10 @@ nav a {
 form div {
 	margin: 1em;
 	display: inline-block;
+}
+
+.background-sargasso {
+	background-color: #485167;
 }
 
 .blue-links {

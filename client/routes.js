@@ -32,6 +32,7 @@ class Routes extends Component {
             <Route path="/lists/:listId" component={EditList} />
             <Route path="/lists" component={AllLists} />
             <Route path="/home" component={UserHome} />
+            <Route component={UserHome} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

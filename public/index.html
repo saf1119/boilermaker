@@ -8,7 +8,8 @@
     <meta name="theme-color" content="#317EFB"/>
     <meta name="mobile-web-app-capable" content="yes">
     <title>PackIt</title>
-    <link rel="stylesheet" href="/style.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" />
+      <link rel="stylesheet" href="/style.css" />
     <script defer src="/bundle.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css">
     <link rel="stylesheet" href="style.css">
@@ -16,11 +17,10 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
-<script src="semantic/dist/semantic.min.js"></script>
   <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          navigator.serviceWorker.register('./sw.js').then(function(registration) {
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
           }, function(err) {

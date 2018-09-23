@@ -7,7 +7,7 @@
   "scope": "/",
   "icons": [
     {
-      "src": "packit.png",
+      "src": "packicon.png",
       "type": "image/png",
       "sizes": "192x192"
     },

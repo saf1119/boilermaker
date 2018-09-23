@@ -61,19 +61,31 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-router.put('/update/:listid', async (req, res, next) => {
-  const listItems = req.body.listItems
-  const listItemsInDB = ListItems.findAll({
-    where: {
-      listId: req.body.listId
-    }
-  })
-  listItemsInDB.data.forEach(listIteminDB => {
-    let found = listItems.find(listItem => {
-      return listItem.id === listIteminDB.id
+router.put('/update/:listId', async (req, res, next) => {
+  try {
+    console.log('req.body', req.body)
+    const listItems = req.body.listItems
+    await ListItem.destroy({
+      where: {
+        listId: req.params.listId
+      }
     })
-    if (!found) {
-      listIteminDB.destroy()
+    for(let i = 0; i<listItems.length; ++i) {
+      await ListItem.create({
+        name: listItems[i].name,
+        quantity: listItems[i].quantity,
+        listId: req.params.listId
+      })
     }
-  })
+
+    const list = await List.findOne({
+      where: {
+        id: req.params.listId
+      },
+      include: [{model: ListItem}]
+    })
+    res.json(list)
+  } catch (error) {
+    next(error)
+  }
 })

@@ -8,6 +8,8 @@ const SAVE_LIST = 'SAVE_LIST'
 const GET_USER_LISTS = 'GET_USER_LISTS'
 const UPDATE_LIST = 'UPDATE_LIST'
 const GET_SINGLE_LIST = 'GET_SINGLE_LIST'
+const ADD_QUANTITY = 'ADD_QUANTITY'
+const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY'
 
 export const createListFromWeather = (name, place, summary, data, numDays) => ({
 	type: CREATE_LIST,
@@ -48,6 +50,16 @@ const getList = list => ({
 	list
 })
 
+export const addQuantity = listItem => ({
+	type: ADD_QUANTITY,
+	listItem
+})
+
+export const subtractQuantity = listItem => ({
+	type: SUBTRACT_QUANTITY,
+	listItem
+})
+
 //thunks
 export const saveListToServer = list => {
 	return async dispatch => {
@@ -65,11 +77,13 @@ export const getUserListsFromServer = userId => {
 
 export const updateListInServer = updateInfo => {
 	return async dispatch => {
+		console.log('update Info', updateInfo)
 		const res = await axios.put(
-			`/api/lists/update/${updateInfo.id}`,
+			`/api/lists/update/${updateInfo.listId}`,
 			updateInfo
 		)
-		dispatch(updateList(res.data[1][0]))
+		console.log('res data here', res.data)
+		//dispatch(updateList(res.data))
 	}
 }
 
@@ -89,6 +103,7 @@ let tempData
 let listItems
 let inProgressList
 let userLists
+let listItem
 export default function(state = defaultList, action) {
 	switch (action.type) {
 		case CREATE_LIST:
@@ -118,6 +133,24 @@ export default function(state = defaultList, action) {
 				...state,
 				inProgressList: {...state.inProgressList, listItems: listItems}
 			}
+		case ADD_QUANTITY:
+			listItem = {
+				name: action.listItem.name,
+				quantity: (parseInt(action.listItem.quantity) + 1)
+			}
+			listItems = state.inProgressList.listItems.map((singleItem) => {
+				return (singleItem.name === listItem.name) ? listItem : singleItem
+			})
+			return {...state, inProgressList: {...state.inProgressList, listItems: listItems}}
+		case SUBTRACT_QUANTITY:
+			listItem = {
+				name: action.listItem.name,
+				quantity: (parseInt(action.listItem.quantity) - 1)
+			}
+			listItems = state.inProgressList.listItems.map((singleItem) => {
+				return (singleItem.name === listItem.name) ? listItem : singleItem
+			})
+			return {...state, inProgressList: {...state.inProgressList, listItems: listItems}}
 		case UPDATE_LIST:
 			userLists = state.userLists.map(list => {
 				return list.id === action.updatedList.id

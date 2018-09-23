@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div className="blue">
+  <div className="blue animated fadeIn border">
     <div className="ui one column stackable center aligned page grid">
       <div className="column twelve wide">
         <h3 />
@@ -14,17 +14,17 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     </div>
     <nav>
       {isLoggedIn ? (
-        <div className="ui one column stackable center aligned page grid">
+        <div className="border ui one column stackable center aligned page grid">
           <div className="column twelve wide">
             {/* The navbar will show these links after you log in */}
             <a href="#" onClick={handleClick}>
-              <h3 className="form">Logout</h3>
+              <h3 className="form white-color">Logout</h3>
             </a>
             <Link to="/lists">
-              <h3 className="form">My Lists</h3>
+              <h3 className="form white-color">My Lists</h3>
             </Link>
             <Link to="/geocoding">
-              <h3 className="form">New List</h3>
+              <h3 className="form white-color">New List</h3>
             </Link>
           </div>
         </div>
@@ -33,16 +33,15 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <div className="column twelve wide">
             {/* The navbar will show these links before you log in */}
             <Link to="/login">
-              <h3 className="form">Login</h3>
+              <h3 className="form white-color">Login</h3>
             </Link>
             <Link to="/signup">
-              <h3 className="form">Sign Up</h3>
+              <h3 className="form white-color">Sign Up</h3>
             </Link>
           </div>
         </div>
       )}
     </nav>
-    <hr />
   </div>
 )
 

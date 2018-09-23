@@ -2,11 +2,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 import SingleList from './SingleList'
 import {
+	addQuantity,
 	deleteListItem,
 	addListItem,
 	updateListInServer,
-	getSingleListFromServer
+	getSingleListFromServer,
+	subtractQuantity
 } from '../store/list'
+
+import Navbar from './Navbar'
 
 const mapStateToProps = state => ({
 	list: state.list.inProgressList
@@ -24,6 +28,12 @@ const mapDispatchToProps = dispatch => ({
 	},
 	getSingleList: id => {
 		dispatch(getSingleListFromServer(id))
+	},
+	addQuantity: listItem => {
+		dispatch(addQuantity(listItem))
+	},
+	subtractQuantity: listItem => {
+		dispatch(subtractQuantity(listItem))
 	}
 })
 
@@ -31,7 +41,7 @@ class EditList extends React.Component {
 	state = {
 		name: '',
 		quantity: '',
-		isSaved: false
+		validation: ''
 	}
 	componentDidMount() {
 		const listId = this.props.match.params.listId
@@ -46,33 +56,52 @@ class EditList extends React.Component {
 	}
 	handleAdd = () => {
 		const newItem = this.state
+		console.log('state',newItem)
+		if(this.state.name && (parseInt(this.state.quantity) > 0)) {
 		this.props.addListItem(newItem)
 		this.setState({
 			name: '',
-			quantity: ''
+			quantity: '',
+			fade: 'fadeInLeft',
+			validation: ''
 		})
+	} else {
+		this.setState({ validation: 'Invalid input'})
+	}
+	}
+	handleAddQuantity = listItem => {
+		this.props.addQuantity(listItem)
+	}
+	handleSubtractQuantity = listItem => {
+		this.props.subtractQuantity(listItem)
 	}
 	saveEditedList = async () => {
 		const list = this.props.list
-		const listId = this.props.match.params.id
+		const listId = this.props.match.params.listId
 		const listToSave = {
 			listId: listId,
 			listItems: list.listItems
 		}
 		await this.props.updateList(listToSave)
-		this.setState({isSaved: true})
+		this.props.history.push('/lists')
 	}
 	render() {
 		if (this.props.list) {
 			return (
-				<SingleList
-					handleChange={this.handleChange}
-					handleAdd={this.handleAdd}
-					handleDelete={this.handleDelete}
-					list={this.props.list}
-					isSaved={this.state.isSaved}
-					saveList={this.saveEditedList}
-				/>
+				<div className="background-fixed">
+					<Navbar />
+					<h1 />
+					<SingleList
+						handleChange={this.handleChange}
+						handleAddQuantity={this.handleAddQuantity}
+						handleSubtractQuantity={this.handleSubtractQuantity}
+						handleAdd={this.handleAdd}
+						handleDelete={this.handleDelete}
+						list={this.props.list}
+						saveList={this.saveEditedList}
+						validation={this.state.validation}
+					/>
+				</div>
 			)
 		}
 	}
