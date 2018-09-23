@@ -44,7 +44,7 @@ passport.deserializeUser(async (id, done) => {
 
 const createApp = () => {
   // logging middleware
-  app.use(enforce.HTTPS({trustProtoHeader: true}))
+  //app.use(enforce.HTTPS({trustProtoHeader: true}))
   app.use(morgan('dev'))
 
   // body parsing middleware
