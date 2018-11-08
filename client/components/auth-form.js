@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
-import {Form, Button} from 'semantic-ui-react'
+import {Form, Button, Card, Input} from 'semantic-ui-react'
 import Navbar from './Navbar'
 
 /**
@@ -14,28 +14,28 @@ const AuthForm = props => {
   return (
     <div className="animated fadeIn">
       <Navbar />
-      <div className="background-img">
+      <div>
         <div className="background ui one column stackable center aligned page grid">
-          <div className="column twelve wide">
+          <div className="column seven wide">
             <br />
             <br />
-            <Form onSubmit={handleSubmit} name={name}>
-              <Form.Field>
-                <label htmlFor="email">Email</label>
-                <input name="email" type="text" />
-              </Form.Field>
+            <div className="max-width">
+            <div className="ui raised fluid card">
               <br />
-              <Form.Field className="form">
-                <label htmlFor="password">Password</label>
-                <input name="password" type="password" />
-              </Form.Field>
+              <h1 className="black">Login</h1>
+            <Form onSubmit={handleSubmit} name={name}>
+              <Form.Field control={Input} placeholder="Email" name="email" />
+              <Form.Field control={Input} placeholder="Password" type="password" name="password" />
+              <br />
               <br />
               <Button color="blue" type="submit" size="small" className="form">
                 <h4 className="form">{displayName}</h4>
               </Button>
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
+                          </div>
             <br />
+            </div>
           </div>
         </div>
       </div>
@@ -58,14 +58,6 @@ const mapLogin = state => {
   }
 }
 
-const mapSignup = state => {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.user.error
-  }
-}
-
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
@@ -79,7 +71,6 @@ const mapDispatch = dispatch => {
 }
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 
 /**
  * PROP TYPES

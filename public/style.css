@@ -14,6 +14,10 @@ body {
 	max-height: 800px;
 }
 
+.ui.blue.small.button {
+	background-color: #485167;
+}
+
 .background::after {
 	content: '';
 	background: url('packing.jpg');
@@ -27,6 +31,19 @@ body {
 	z-index: -1;
 }
 
+.ui.input {
+	margin: 0px 5px 0px 0px;
+	padding: 5px 0px 5px 5px;
+}
+
+.right {
+	float: right;
+}
+
+.background-lighter {
+	background-color: #d4d9de
+/*	border-radius: 50px 50px 50px 50px;
+*/}
 .background-fixed {
 	content: '';
 	background: url('packing.jpg');
@@ -39,10 +56,35 @@ body {
 	right: 0;
 	z-index: -1;
 }
+
+.bottom {
+	position: fixed;
+	bottom: 5px;
+	padding: 50px 50px 50px 50px;
+	right: 5px;
+	color: #485167;
+	font-size: 30px;
+}
+
+.max-width {
+	max-width: 500px;
+}
+
+.bottom-padded {
+	font-size: 58px;
+	position: fixed;
+	bottom: 40px;
+	padding: 50px 50px 50px 50px;
+	right: 5px;
+	color: #485167;
+}
 .whiteColor {
 	color: white;
 }
 
+.background-white {
+	background-color: white
+}
 .padding {
 	padding: 15px 15px 15px 15px;
 

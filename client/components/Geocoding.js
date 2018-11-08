@@ -7,12 +7,13 @@ import {Button, Checkbox, Form} from 'semantic-ui-react'
 import NavBar from './NavBar'
 
 const mapDispatchToProps = dispatch => ({
-	createList: (name, place, summary, data, numDays) =>
-		dispatch(createListFromWeather(name, place, summary, data, numDays))
+	createList: (name, place, summary, data, numDays, userId) =>
+		dispatch(createListFromWeather(name, place, summary, data, numDays, userId))
 })
 
 const mapStateToProps = state => ({
-	list: state.list.inProgressList
+	list: state.list.inProgressList,
+	user: state.user
 })
 
 class Geocoding extends React.Component {
@@ -29,7 +30,6 @@ class Geocoding extends React.Component {
 		this.setState({[event.target.name]: event.target.value})
 	}
 	handleSubmit = async event => {
-		console.log('here', this.state)
 		event.preventDefault()
 		if(parseInt(this.state.numDays) > 1 && this.state.city && this.state.state && this.state.state) {
 			const address = `${this.state.city} ${this.state.state}`
@@ -41,12 +41,14 @@ class Geocoding extends React.Component {
 			const weatherData = data.data
 			const numDays = this.state.numDays
 			const name = this.state.name
+			const userId = this.props.user.id
 			await this.props.createList(
 				name,
 				address,
 				summary,
 				weatherData,
-				numDays
+				numDays,
+				userId
 			)
 			this.props.history.push('/newList')
 	} else {
@@ -54,6 +56,7 @@ class Geocoding extends React.Component {
 	}
 	}
 	render() {
+		console.log('props', this.props)
 		return (
 			<div className={`animated ${this.state.fade} background`}>
 				<NavBar />

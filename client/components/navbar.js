@@ -33,10 +33,10 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <div className="column twelve wide">
             {/* The navbar will show these links before you log in */}
             <Link to="/login">
-              <h3 className="form white-color">Login</h3>
+              <h3 className="form white-color right">Login</h3>
             </Link>
             <Link to="/signup">
-              <h3 className="form white-color">Sign Up</h3>
+              <h3 className="form white-color right">Sign Up</h3>
             </Link>
           </div>
         </div>

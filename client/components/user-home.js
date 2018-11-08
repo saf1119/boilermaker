@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import Navbar from './Navbar'
+import {Card} from 'semantic-ui-react'
 
 /**
  * COMPONENT
@@ -10,16 +11,13 @@ export const UserHome = props => {
   const {email} = props
 
   return (
-    <div className="animated fadeIn background-home">
+    <div className="animated fadeIn background">
       <Navbar />
       <div className="animated fadeIn">
         <div className="ui two column stackable center aligned page grid">
-          <div className="column thirty wide">
-            <br />
-            <br />
-            <br />
-            <h1 className="whiteColor form">Welcome, {email}</h1>
-            <h2 className="whiteColor form">
+          <div className="column">
+            <h1 className="form bottom-padded">Welcome, {email}</h1>
+            <h2 className="form bottom">
               Planning your next trip is just a few clicks away!
             </h2>
           </div>

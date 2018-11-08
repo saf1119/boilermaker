@@ -1,6 +1,7 @@
 const User = require('./user')
 const List = require('./lists')
 const ListItem = require('./listItems')
+const UserList = require('./userLists')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -25,8 +26,12 @@ List.hasMany(ListItem)
 ListItem.belongsTo(User)
 User.hasMany(ListItem)
 
+UserList.belongsTo(User)
+User.hasMany(UserList)
+
 module.exports = {
 	User,
 	List,
-	ListItem
+	ListItem,
+	UserList
 }

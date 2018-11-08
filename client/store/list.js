@@ -11,13 +11,14 @@ const GET_SINGLE_LIST = 'GET_SINGLE_LIST'
 const ADD_QUANTITY = 'ADD_QUANTITY'
 const SUBTRACT_QUANTITY = 'SUBTRACT_QUANTITY'
 
-export const createListFromWeather = (name, place, summary, data, numDays) => ({
+export const createListAction = (name, place, summary, data, numDays, otherListItems) => ({
 	type: CREATE_LIST,
 	name,
 	place,
 	summary,
 	data,
-	numDays
+	numDays,
+	otherListItems
 })
 
 export const deleteListItem = listItem => ({
@@ -75,9 +76,16 @@ export const getUserListsFromServer = userId => {
 	}
 }
 
+export const createListFromWeather = (name, place, summary, data, numDays, userId) => {
+	return async dispatch => {
+		const listItems = await axios.get(`/api/userLists/${userId}`)
+		console.log('listItems', listItems)
+		dispatch(createListAction(name, place, summary, data, numDays, listItems.data))
+	}
+}
+
 export const updateListInServer = updateInfo => {
 	return async dispatch => {
-		console.log('update Info', updateInfo)
 		const res = await axios.put(
 			`/api/lists/update/${updateInfo.listId}`,
 			updateInfo
@@ -109,6 +117,7 @@ export default function(state = defaultList, action) {
 		case CREATE_LIST:
 			tempData = analyzeTemperature(action.data)
 			listItems = calculateList(tempData, action.numDays)
+			listItems = listItems.concat(action.otherListItems)
 			inProgressList = {
 				name: action.name,
 				place: action.place,
