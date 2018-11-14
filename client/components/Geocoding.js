@@ -56,7 +56,6 @@ class Geocoding extends React.Component {
 	}
 	}
 	render() {
-		console.log('props', this.props)
 		return (
 			<div className={`animated ${this.state.fade} background`}>
 				<NavBar />
@@ -67,24 +66,21 @@ class Geocoding extends React.Component {
 						<div className="ui one column thirty wide stackable center aligned page grid">
 							<div className="column twenty wide">
 								<br />
-								<h3 className="black">Where are you going?</h3>
+								<h3 className="sargasso form">Where are you going?</h3>
 								<Form onSubmit={this.handleSubmit}>
+								<br />
 									<Form.Field>
-										<label className="sargasso">
-											List name
-										</label>
+
 										<input
-											placeholder="Name"
+											placeholder="List Name"
 											type="text"
 											name="name"
 											onChange={this.handleChange}
 										/>
 									</Form.Field>
 									<br />
+									<br />
 									<Form.Field>
-										<label className="sargasso">
-											Number of days
-										</label>
 										<input
 											placeholder="Number of days"
 											type="text"
@@ -93,8 +89,8 @@ class Geocoding extends React.Component {
 										/>
 									</Form.Field>
 									<br />
+									<br />
 									<Form.Field>
-										<label className="sargasso">City</label>
 										<input
 											placeholder="City"
 											type="text"
@@ -103,10 +99,8 @@ class Geocoding extends React.Component {
 										/>
 									</Form.Field>
 									<br />
+									<br />
 									<Form.Field>
-										<label className="sargasso">
-											State
-										</label>
 										<input
 											placeholder="State"
 											type="text"
@@ -115,12 +109,8 @@ class Geocoding extends React.Component {
 										/>
 									</Form.Field>
 									<br />
-									<button
-										type="submit"
-										className="ui basic black button"
-									>
-										<h4 className="fadeIn">Submit</h4>
-									</button>
+									<br />
+									<Button type="submit" size="small" color="blue">Submit</Button>
 										<h4 className="red">{this.state.validation}</h4>
 
 								</Form>

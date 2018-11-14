@@ -23,13 +23,13 @@ class AllLists extends React.Component {
 			return (
 				<div className="background">
 					<Navbar />
+					<br />
+					<br />
 				<div className="ui stackable center aligned page grid">
-					<h1 />
-					<h1 />
 					<div className="sizing ui white card">
+					<br />
 					<div className="column">
 						<div className="ui center aligned grid">
-						<h1 />
 						<h2 className="sargasso underline">My Lists</h2>
 						<h3 />
 						</div>

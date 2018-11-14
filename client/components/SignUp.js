@@ -22,13 +22,14 @@ class SignUp extends React.Component {
     const buttonCount = this.state.buttonCount
     this.setState({ buttonCount: (buttonCount + 1)})
     let newState = <React.Fragment>
-                    {this.state.moreButtons}
                     <Form.Field>
-                <input name={`quantity${buttonCount + 1}`} type="quantity" onChange={this.handleChange} /> 
+                <input placeholder="quantity" name={`quantity${buttonCount + 1}`} type="quantity" onChange={this.handleChange} /> 
               </Form.Field>
               <Form.Field>
-                <input name={`item${buttonCount + 1}`} type="item" onChange={this.handleChange} /> 
+                <input placeholder="item" name={`item${buttonCount + 1}`} type="item" onChange={this.handleChange} /> 
               </Form.Field>
+              <br />
+              {this.state.moreButtons}
               <br /></React.Fragment>
     this.setState({moreButtons: newState })
   }
@@ -43,25 +44,21 @@ class SignUp extends React.Component {
             <br />
             <br />
             <div className="ui raised fluid card">
-            <h1 className="black">Sign Up</h1>
+            <h1 className="sargasso form">Sign Up</h1>
              <Form name={name}>
                <Form.Field>
-                 <label htmlFor="email">Email</label>
-                 <input name="email" type="text" onChange={this.handleChange}/>
+                 <input placeholder="Email" name="email" type="text" onChange={this.handleChange}/>
                </Form.Field>
               <br />
               <Form.Field className="form">
-                <label htmlFor="password">Password</label>
-                <input name="password" type="password" onChange={this.handleChange}/>
+                <input placeholder="Password" name="password" type="password" onChange={this.handleChange}/>
               </Form.Field>
-              <h3 className="black">Below, enter any items that you'd want to include in every packing list that you make (some examples would be glasses, contacts, a prescription, toiletries)</h3>
+              <h3 className="black" className="sargasso form">Below, enter any items that you'd want to include in every packing list that you make (some examples would be glasses, contacts, a prescription, toiletries)</h3>
               <Form.Field>
-                <label htmlFor="quantity">Quantity</label>
-                <input name="quantity0" type="quantity" onChange={this.handleChange}/> 
+                <input placeholder="quantity" name="quantity0" type="quantity" onChange={this.handleChange}/> 
               </Form.Field>
               <Form.Field>
-                <label htmlFor="item">Item</label>
-                <input name="item0" type="item" onChange={this.handleChange}/> 
+                <input placeholder="item" name="item0" type="item" onChange={this.handleChange}/> 
               </Form.Field>
               <br />
               {this.state.moreButtons}

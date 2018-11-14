@@ -22,7 +22,7 @@ const AuthForm = props => {
             <div className="max-width">
             <div className="ui raised fluid card">
               <br />
-              <h1 className="black">Login</h1>
+              <h1 className="sargasso form">Login</h1>
             <Form onSubmit={handleSubmit} name={name}>
               <Form.Field control={Input} placeholder="Email" name="email" />
               <Form.Field control={Input} placeholder="Password" type="password" name="password" />

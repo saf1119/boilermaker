@@ -17,7 +17,8 @@ const SingleList = props => {
 								<p className="tiny-black">{list.weatherSummary}</p>
 								<br />
 								<Button
-									color="basic violet"
+									size="small"
+									color="blue"
 									onClick={props.saveList}
 								>
 									Save List
@@ -41,12 +42,12 @@ const SingleList = props => {
 										/>
 									</Form.Field>
 									<br />
-									<Button color="basic green" type="submit">
+									<Button size="small" color="green" type="submit">
 										Add item
 									</Button>
-									<h3 className="red">{props.validation}</h3>
-								</Form>
+=								</Form>
 								<h5 className="sargasso">What to pack: </h5>
+								<br />
 							</div>
 						</div>
 						<div className="ui stackable center aligned page grid">
@@ -61,34 +62,15 @@ const SingleList = props => {
 											<h4>
 												<div className="row">
 													{`${listItem.quantity} ${listItem.name}`}
-												</div>
-												<div className="row">
-													<button
-														type="button"
-														className="mini ui animated basic green button"
-														onClick={() => {props.handleAddQuantity(listItem)}}
-													>
-															<Icon name="add" />
-													</button>
-													<button
-														type="button"
-														className="mini ui animated basic red button"
-														onClick={() => {props.handleSubtractQuantity(listItem)}}
-													>
-															<Icon name="minus" />
-													</button>
-													<button
-														type="button"
-														className="mini ui animated basic violet button"
-														onClick={() => {
+															<Icon color="green" name="add" onClick={() => {props.handleAddQuantity(listItem)}}/>
+															<Icon color="red" name="minus" onClick={() => {props.handleSubtractQuantity(listItem)}}/>
+															<Icon name="delete" onClick={() => {
 															props.handleDelete(
 																listItem
 															)
-														}}
-													>
-															<Icon name="delete" />
-													</button>
+														}} />
 												</div>
+												<br />
 											</h4>
 										</div>
 									)

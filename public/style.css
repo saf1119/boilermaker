@@ -36,8 +36,35 @@ body {
 	padding: 5px 0px 5px 5px;
 }
 
-.right {
-	float: right;
+
+.splash::after {
+	content: '';
+	background: url('packing.jpg');
+	background-size: cover;
+	opacity: 0.9;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.right-one {
+	position:fixed;
+	right: 15px;
+	top: 75px;
+}
+.right-two {
+	position:fixed;
+	right: 115px;
+	top: 75px;
+}
+
+.right-three {
+	position:fixed;
+	right: 215px;
+	top: 75px;
 }
 
 .background-lighter {
@@ -57,13 +84,28 @@ body {
 	z-index: -1;
 }
 
-.bottom {
+.bottom-right {
 	position: fixed;
-	bottom: 5px;
-	padding: 50px 50px 50px 50px;
-	right: 5px;
+    bottom: 30px;
+    right: 30px;
+    max-width: 550px;
 	color: #485167;
 	font-size: 30px;
+}
+
+.padded {
+	padding: 10px 10px 10px 10px;
+}
+.bottom {
+	position: fixed;
+	bottom: 50px;
+	left: 700px;
+	font-size: 30px;
+	color: #485167;
+}
+
+h2.bottom {
+	right: 5px;
 }
 
 .max-width {
@@ -190,7 +232,7 @@ form div {
 }
 .blue {
 	background-color: #485167;
-	border-radius: 0px 0px 100px 100px;
+	box-shadow: 100px 100px 100px 100px
 	opacity: 0.9;
 }
 
@@ -202,6 +244,7 @@ form div {
 
 .sargasso {
 	color: #485167;
+	opacity: 1.0;
 }
 
 .form {

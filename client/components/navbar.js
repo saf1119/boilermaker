@@ -18,13 +18,13 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <div className="column twelve wide">
             {/* The navbar will show these links after you log in */}
             <a href="#" onClick={handleClick}>
-              <h3 className="form white-color">Logout</h3>
+              <h3 className="form white-color right-one">Logout</h3>
             </a>
             <Link to="/lists">
-              <h3 className="form white-color">My Lists</h3>
+              <h3 className="form white-color right-two">My Lists</h3>
             </Link>
             <Link to="/geocoding">
-              <h3 className="form white-color">New List</h3>
+              <h3 className="form white-color right-three">New List</h3>
             </Link>
           </div>
         </div>
@@ -33,11 +33,12 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <div className="column twelve wide">
             {/* The navbar will show these links before you log in */}
             <Link to="/login">
-              <h3 className="form white-color right">Login</h3>
+              <h3 className="form white-color right-one">Login</h3>
             </Link>
             <Link to="/signup">
-              <h3 className="form white-color right">Sign Up</h3>
+              <h3 className="form white-color right-two">Sign Up</h3>
             </Link>
+            <br />
           </div>
         </div>
       )}
