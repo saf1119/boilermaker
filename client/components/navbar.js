@@ -17,15 +17,18 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <div className="border ui one column stackable center aligned page grid">
           <div className="column twelve wide">
             {/* The navbar will show these links after you log in */}
-            <a href="#" onClick={handleClick}>
-              <h3 className="form white-color right-one">Logout</h3>
-            </a>
             <Link to="/lists">
               <h3 className="form white-color right-two">My Lists</h3>
             </Link>
             <Link to="/geocoding">
               <h3 className="form white-color right-three">New List</h3>
             </Link>
+            <Link to="/profile">
+              <h3 className="form white-color right-four">My Account</h3>
+            </Link>
+             <a href="#" onClick={handleClick}>
+              <h3 className="form white-color right-one">Logout</h3>
+            </a>
           </div>
         </div>
       ) : (

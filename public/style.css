@@ -16,6 +16,7 @@ body {
 
 .ui.blue.small.button {
 	background-color: #485167;
+	font-family: 'Playfair Display', serif, bold;
 }
 
 .background::after {
@@ -49,23 +50,48 @@ body {
 	position: absolute;
 	z-index: -1;
 }
+.ui.label {
+	margin: 0;
+}
+.ui.massive.label {
+	background-color: #485167;
+	color: white;
+	font-family: 'Playfair Display', serif, bold;
+}
 
-.right-one {
-	position:fixed;
-	right: 15px;
-	top: 75px;
+.max-size{
+	max-width: 300px;
+	max-height: 300px;
+	padding: 30px 30px 30px 30px;
+}
+
+.max-width {
+	min-width: 500px;
+}
+
+.ui.button {
+	background-color: #485167;
+	color: white;
+}
+
+/*.right-one {
+	position:absolute;
 }
 .right-two {
-	position:fixed;
-	right: 115px;
-	top: 75px;
+	position:absolute;
+	right: 25px;
+
 }
 
 .right-three {
-	position:fixed;
-	right: 215px;
-	top: 75px;
+	position:absolute;
+	right: 25px;
 }
+
+.right-four {
+	position:absolute;
+	right: 25px;
+}*/
 
 .background-lighter {
 	background-color: #d4d9de
@@ -118,7 +144,7 @@ h2.bottom {
 	position: fixed;
 	bottom: 70px;
 	padding-left: 95px;
-	padding-bottom: 50px;
+	padding-bottom: 50pxt;
 /*	padding: 0px 0px 50px 50px;
 */	right: 5px;
 	color: #485167;

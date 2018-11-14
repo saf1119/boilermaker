@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {SplashPage, Login, SignUp, UserHome} from './components'
+import {SplashPage, Login, SignUp, UserHome, UserProfile, EditProfile} from './components'
 import {me} from './store'
 import Geocoding from './components/Geocoding'
 import NewList from './components/NewList'
@@ -30,9 +30,11 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/geocoding" component={Geocoding} />
             <Route exact path="/newList" component={NewList} />
+            <Route path="/editUser/:userId" component={EditProfile} />
             <Route path="/lists/:listId" component={EditList} />
             <Route path="/lists" component={AllLists} />
             <Route path="/home" component={UserHome} />
+            <Route path="/profile" component={UserProfile} />
             <Route component={UserHome} />
           </Switch>
         )}

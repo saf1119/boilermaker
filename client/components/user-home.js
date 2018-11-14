@@ -14,12 +14,10 @@ export const UserHome = props => {
     <div className="animated fadeIn background">
       <Navbar />
       <div className="animated fadeIn">
-          <div className = "ui white card">
             <h1 className="form bottom-padded">Welcome, {email}</h1>
             <h2 className="form bottom">
               Planning your next trip is just a few clicks away!
             </h2>
-          </div>
           </div>
         </div>
   )
