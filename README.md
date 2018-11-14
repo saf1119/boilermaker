@@ -9,7 +9,9 @@ Deployed link: https://pack-it-stackathon.herokuapp.com/
 In order to install, git clone the link, then:
 
 cd packIt
+
 npm install
+
 npm run start-dev
 
 This should start the server on localhost:8080
