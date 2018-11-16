@@ -20,7 +20,6 @@ class UserProfile extends React.Component {
 	}
 	render() {
 		const {user, userListItems} = this.props
-		if(userListItems.length) {
 			return (
 				<div>
 				<NavBar />
@@ -55,7 +54,6 @@ class UserProfile extends React.Component {
 				</div>
 				</div>
 			)
-		} else return null
 	}
 }
 

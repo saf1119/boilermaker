@@ -31,7 +31,10 @@ body {
 	position: absolute;
 	z-index: -1;
 }
-
+.tinyButton {
+	max-height: 3px
+	max-width 3px
+}
 .ui.input {
 	margin: 0px 5px 0px 0px;
 	padding: 5px 0px 5px 5px;

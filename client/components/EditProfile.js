@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {auth} from '../store'
-import {Form, Button} from 'semantic-ui-react'
+import {Form, Button, Icon} from 'semantic-ui-react'
 import Navbar from './Navbar'
+import {getUserListsFromServer, handleDelete, updateUserItems} from '../store/userListItems'
 
 
  
@@ -34,9 +35,14 @@ class EditProfile extends React.Component {
               <br /></React.Fragment>
     this.setState({moreButtons: newState })
   }
+  componentDidMount() {
+    const userId = this.props.user.id
+    this.props.getUserListsFromServer(userId)
+  }
   render() {
-  const {name, displayName, handleSubmit, error} = this.props
-  return (
+  const {name, error} = this.props
+      const userId = this.props.user.id
+    return (
     <div className="animated fadeIn">
       <Navbar />
       <div>
@@ -48,7 +54,17 @@ class EditProfile extends React.Component {
             <h1 className="sargasso form">Edit my profile</h1>
              <Form name={name}>
               <h3 className="black" className="sargasso form">List of items to include in every packing list:</h3>
-
+              <h4 className="black" className="sargasso form">Items currently included:</h4>
+              <ul>
+              {this.props.userListItems.map((userListItem) => {
+                return (
+                  <li>
+                  <h4 className="sargasso form">{userListItem.quantity} {userListItem.name} <Button onClick={()=>this.props.handleDelete(userListItem.id)} size="mini" color="red">Delete</Button></h4>
+                  <br />
+                  </li>
+                )
+              })}
+              </ul>
               <Form.Field>
                 <input placeholder="quantity" name="quantity0" type="quantity" onChange={this.handleChange}/> 
               </Form.Field>
@@ -61,7 +77,7 @@ class EditProfile extends React.Component {
               <Button color="green" size="small" onClick ={this.handleAdd}>Add Another Item</Button>
               <br />
               <br />
-              <Button color="blue" type="submit" size="small" className="form" onClick={() => handleSubmit(this.state)}>
+              <Button onClick={() => this.props.handleSubmit(userId, this.state)} color="blue" type="submit" size="small" className="form">
                 <h4 className="form">Update User Info</h4>
               </Button>
               {error && error.response && <div> {error.response.data} </div>}
@@ -77,24 +93,24 @@ class EditProfile extends React.Component {
 
 const mapSignup = state => {
   return {
-   	
+    user: state.user,
+   	userListItems: state.userListItems,
     error: state.user.error
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    handleSubmit(stateObj) {
+    getUserListsFromServer: (userId) => dispatch(getUserListsFromServer(userId)),
+    handleDelete: (userListId) => dispatch(handleDelete(userListId)),
+    handleSubmit: (userId, stateObj) => {
       const quantity = []
       const item = []
       for(let i = 0; i <= stateObj.buttonCount; i++) {
         quantity.push(stateObj[`quantity${i}`])
         item.push(stateObj[`item${i}`])
       }
-      const formName = 'signup'
-      const email = stateObj.email
-      const password = stateObj.password
-      dispatch(auth(email, password, formName, item, quantity))
+      dispatch(updateUserItems(userId, item, quantity))
     }
   }
 }

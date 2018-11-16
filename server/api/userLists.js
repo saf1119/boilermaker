@@ -32,3 +32,17 @@ router.post('/:userId', async (req, res, next) => {
     next(error)
   }
 })
+
+router.delete('/:userListId', async (req, res, next) => {
+  try {
+    const destroyed = await UserList.destroy({
+      where:
+        {
+          id: req.params.userListId
+        }
+    })
+    res.json(destroyed)
+  } catch(error) {
+    console.log(error)
+  }
+})
