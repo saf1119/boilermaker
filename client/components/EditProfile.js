@@ -18,20 +18,21 @@ class EditProfile extends React.Component {
   handleChange = (evt) => {
       this.setState({[evt.target.name]: evt.target.value,
                       name: evt.target.name })
+      console.log('state', this.state)
   }
 
   handleAdd = () => {
     const buttonCount = this.state.buttonCount
     this.setState({ buttonCount: (buttonCount + 1)})
     let newState = <React.Fragment>
+    {this.state.moreButtons}
                     <Form.Field>
-                <input placeholder="quantity" name={`quantity${buttonCount + 1}`} type="quantity" onChange={this.handleChange} /> 
+                <input placeholder="quantity" name={`quantity${this.state.buttonCount + 1}`} type="quantity" onChange={this.handleChange} /> 
               </Form.Field>
               <Form.Field>
-                <input placeholder="item" name={`item${buttonCount + 1}`} type="item" onChange={this.handleChange} /> 
+                <input placeholder="item" name={`item${this.state.buttonCount + 1}`} type="item" onChange={this.handleChange} /> 
               </Form.Field>
               <br />
-              {this.state.moreButtons}
               <br /></React.Fragment>
     this.setState({moreButtons: newState })
   }
@@ -55,16 +56,16 @@ class EditProfile extends React.Component {
              <Form name={name}>
               <h3 className="black" className="sargasso form">List of items to include in every packing list:</h3>
               <h4 className="black" className="sargasso form">Items currently included:</h4>
-              <ul>
               {this.props.userListItems.map((userListItem) => {
                 return (
-                  <li>
+                  <React.Fragment>
+                  <div>
                   <h4 className="sargasso form">{userListItem.quantity} {userListItem.name} <Button onClick={()=>this.props.handleDelete(userListItem.id)} size="mini" color="red">Delete</Button></h4>
+                  </div>
                   <br />
-                  </li>
+                  </React.Fragment>
                 )
               })}
-              </ul>
               <Form.Field>
                 <input placeholder="quantity" name="quantity0" type="quantity" onChange={this.handleChange}/> 
               </Form.Field>

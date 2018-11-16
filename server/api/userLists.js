@@ -27,7 +27,12 @@ router.post('/:userId', async (req, res, next) => {
           userId: req.params.userId
       })
     }
-    res.sendStatus(201)
+    const userListItems = await UserList.findAll({
+      where: {
+        userId: req.params.userId
+      }
+    })
+    res.json(userListItems)
   } catch (error) {
     next(error)
   }

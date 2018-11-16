@@ -9,7 +9,7 @@ const getUserLists = (userLists) => ({type: GET_USER_LISTS, userLists})
 
 const handleDeleteUserListItem = (userListId) => ({type: DELETE_USER_LIST, userListId})
 
-export const handleUpdate = (userItems) => ({ type: UPDATE_USER_LIST, userItems})
+const handleUpdate = (userItems) => ({ type: UPDATE_USER_LIST, userItems})
 
 export const getUserListsFromServer = (userId) => {
 	return async dispatch => {
@@ -22,7 +22,7 @@ export const updateUserItems = (userId, item, quantity) => {
 	return async dispatch => {
 		console.log('here', userId, item, quantity)
         let userItems = await axios.post(`/api/userLists/${userId}`, {item, quantity})
- 		dispatch(updateUserItems(userItems.data))
+ 		dispatch(handleUpdate(userItems.data))
 	}
 }
 
@@ -43,7 +43,7 @@ export default function(state = [], action) {
 				return (userListItem.id !== action.userListId)
 			})
 		case UPDATE_USER_LIST:
-			return state.concat(action.userItems)
+			return action.userItems
 		default:
 			return state
 	}
