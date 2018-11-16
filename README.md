@@ -12,6 +12,10 @@ cd packIt
 
 npm install
 
+createdb packIt
+
+npm run seed
+
 npm run start-dev
 
 This should start the server on localhost:8080
