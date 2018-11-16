@@ -1,12 +1,4 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {auth} from '../store'
-import {Form, Button} from 'semantic-ui-react'
-import Navbar from './Navbar'
-
-
- 
-class EditProfile extends React.Component {
+class SignUp extends React.Component {
   state = {
     moreButtons: ``,
     buttonCount: 0,
@@ -45,10 +37,16 @@ class EditProfile extends React.Component {
             <br />
             <br />
             <div className="ui raised fluid card">
-            <h1 className="sargasso form">Edit my profile</h1>
+            <h1 className="sargasso form">Sign Up</h1>
              <Form name={name}>
-              <h3 className="black" className="sargasso form">List of items to include in every packing list:</h3>
-
+               <Form.Field>
+                 <input placeholder="Email" name="email" type="text" onChange={this.handleChange}/>
+               </Form.Field>
+              <br />
+              <Form.Field className="form">
+                <input placeholder="Password" name="password" type="password" onChange={this.handleChange}/>
+              </Form.Field>
+              <h3 className="black" className="sargasso form">Below, enter any items that you'd want to include in every packing list that you make (some examples would be glasses, contacts, a prescription, toiletries)</h3>
               <Form.Field>
                 <input placeholder="quantity" name="quantity0" type="quantity" onChange={this.handleChange}/> 
               </Form.Field>
@@ -62,7 +60,7 @@ class EditProfile extends React.Component {
               <br />
               <br />
               <Button color="blue" type="submit" size="small" className="form" onClick={() => handleSubmit(this.state)}>
-                <h4 className="form">Update User Info</h4>
+                <h4 className="form">{displayName}</h4>
               </Button>
               {error && error.response && <div> {error.response.data} </div>}
             </Form>
@@ -77,7 +75,8 @@ class EditProfile extends React.Component {
 
 const mapSignup = state => {
   return {
-   	
+    name: 'signup',
+    displayName: 'Sign Up',
     error: state.user.error
   }
 }
@@ -98,5 +97,3 @@ const mapDispatch = dispatch => {
     }
   }
 }
-
-export default connect(mapSignup, mapDispatch)(EditProfile)

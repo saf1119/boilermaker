@@ -24,11 +24,12 @@ export const calculateList = (
 ) => {
 	let listItems = []
 	numDays = parseInt(numDays)
+	let numPants = (numDays > 8) ? 4 : Math.floor(numDays/2)
 	if (avgTemp > 70) {
 		listItems = [
 			{
 				name: 'pair(s) of shorts',
-				quantity: numDays - 1
+				quantity: numPants
 			},
 			{
 				name: 'short-sleeved shirts',
@@ -63,7 +64,7 @@ export const calculateList = (
 		listItems = [
 			{
 				name: 'pair(s) of pants',
-				quantity: numDays - 2
+				quantity: numPants
 			},
 			{
 				name: 'pair of shorts',
@@ -106,7 +107,7 @@ export const calculateList = (
 		listItems = [
 			{
 				name: 'pair(s) pants',
-				quantity: numDays - 1
+				quantity: numPants
 			},
 			{
 				name: 'short-sleeved shirts',
@@ -149,7 +150,7 @@ export const calculateList = (
 		listItems = [
 			{
 				name: 'pair of pants',
-				quantity: numDays - 1
+				quantity: numPants
 			},
 			{
 				name: 'short-sleeved shirts',
@@ -192,7 +193,7 @@ export const calculateList = (
 		listItems = [
 			{
 				name: 'pairs of pants',
-				quantity: numDays - 1
+				quantity: numPants
 			},
 			{
 				name: 'long-sleeved shirts',
